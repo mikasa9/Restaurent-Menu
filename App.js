@@ -58,6 +58,7 @@ export default class App extends Component {
                     </Text>
                     <TextInput
                         style={styles.inputButton}
+                        placeholder="E-mail"
                     />
                     <Text
                         style={{
@@ -72,6 +73,7 @@ export default class App extends Component {
                      </Text>
                     <TextInput
                         style={styles.inputButton}
+                        placeholder="Password"
                     />
                     <TouchableOpacity
                         style={styles.button}
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
         margin: 5,
         width: 350,
         color: '#ff4500',
-        fontSize: 27
+        fontSize: 27,        
     },
     button: {
         marginTop: 25,
