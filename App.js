@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     StackNavigator,
     DrawerNavigator
 } from 'react-navigation';
 import LandingPage from './src/components/LandingPage';
 import Details from './src/components/Details';
+import SideBar from './src/components/SideBar';
+
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -27,7 +29,7 @@ const customDrawerNavigation = DrawerNavigator({
         screen: StackNavigation,
     },
 }, {
-        contentComponent: props=><Details{...props}/>,
+        contentComponent: props=><SideBar {...props}/>,
         drawerWidth: 300
     });
 

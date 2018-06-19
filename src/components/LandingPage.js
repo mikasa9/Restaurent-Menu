@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
+import Header from './Header';
 
 export default class LandingPage extends Component {
    
@@ -87,6 +88,9 @@ export default class LandingPage extends Component {
                     </Text>
                     </TouchableOpacity>
                 </View>
+                <Header
+                onPress={()=>this.props.navigation.toggleDrawer()}
+                />
             </View>
 
         )
