@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-navigation';
+import {
+    StackNavigator,
+    DrawerNavigator
+} from 'react-navigation';
 import LandingPage from './src/components/LandingPage';
 import Details from './src/components/Details';
 
-export default createStackNavigator({
+const StackNavigation = StackNavigator({
     Home: {
         screen: LandingPage,
         navigationOptions: {
@@ -13,7 +16,20 @@ export default createStackNavigator({
     Details: {
         screen: Details,
         navigationOptions: () => ({
-           title:'Detail',                    
+            title: 'Detail',
         })
     },
 });
+
+const customDrawerNavigation = DrawerNavigator({
+
+    Main: {
+        screen: StackNavigation,
+    },
+}, {
+        contentComponent: props=><Details{...props}/>,
+        drawerWidth: 300
+    });
+
+
+export default customDrawerNavigation;
