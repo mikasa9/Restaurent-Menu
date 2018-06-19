@@ -6,6 +6,7 @@ import {
 import LandingPage from './src/components/LandingPage';
 import Details from './src/components/Details';
 import SideBar from './src/components/SideBar';
+import About from './src/components/About';
 
 
 const StackNavigation = StackNavigator({
@@ -20,6 +21,9 @@ const StackNavigation = StackNavigator({
         navigationOptions: () => ({
             title: 'Detail',
         })
+    },
+    About:{
+        screen: About
     },
 });
 
