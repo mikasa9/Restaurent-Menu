@@ -6,10 +6,13 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet,
-    StatusBar
+    StatusBar,
+    Dimensions
 } from 'react-native';
 import Header from './Header';
 
+let width=Dimensions.get('window').width;
+let height=Dimensions.get('window').height;
 export default class LandingPage extends Component {
    
     render() {
@@ -110,8 +113,8 @@ const styles = StyleSheet.create({
     imageStyle: {
         marginTop: 20,
         resizeMode: 'center',
-        height: 100,
-        width: 250
+        height: (100/790)*height,
+        width: (250/152)*width
     },
     title: {
         fontSize: 27,
@@ -120,16 +123,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputButton: {
-        margin: 5,
-        width: 350,
+        margin: (5/152)*width,
+        width: (130/152)*width,
         color: '#ff4500',
         fontSize: 27,
     },
     button: {
-        marginTop: 25,
+        marginTop: 10,
         backgroundColor: '#ff4500',
-        paddingHorizontal: 150,
-        paddingVertical: 15,
+        paddingHorizontal: (60/152)*width,
+        paddingVertical: (10/790)*height,
         borderRadius: 7
     },
 })

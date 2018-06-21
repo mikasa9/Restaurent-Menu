@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Image, FlatList, Text, StatusBar, TouchableOpacity } from 'react-native';
 import BackButton from './BackButton';
+import Like from './Like'
 const Ad = [{ id: '1', img: 'https://i.imgur.com/eWeLsAY.png' },
 { id: '2', img: 'http://longwallpapers.com/Desktop-Wallpaper/food-wallpapers-photo-For-Desktop-Wallpaper.jpg' },
 { id: '3', img: 'https://qph.ec.quoracdn.net/main-qimg-c10ec9920a42a9ec7a3e661460909af4.webp' },
@@ -40,7 +41,7 @@ export default class About extends Component {
                 style={[styles.container, { borderRadius: 7 }]}
             >
                 <Image
-                    style={{ height: 150, width: 200, borderRadius: 7 }}
+                    style={{ height: 150, width: 200, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}
                     source={{ uri: item.img }} />
 
                 <View style={styles.detail}>
@@ -51,6 +52,9 @@ export default class About extends Component {
                         {item.text}
                     </Text>
                 </View>
+                <Like
+                    onPress={() => null}
+                />
 
             </TouchableOpacity>
         )
@@ -118,7 +122,9 @@ const styles = StyleSheet.create({
         width: 200,
         height: 70,
         backgroundColor: '#f7f7f7',
-        borderRadius:7
+        borderBottomLeftRadius: 7,
+        borderBottomRightRadius: 7
+
     },
 
 });
