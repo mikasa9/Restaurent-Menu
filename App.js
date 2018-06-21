@@ -20,11 +20,18 @@ const StackNavigation = StackNavigator({
         screen: Details,
         navigationOptions: () => ({
             title: 'Detail',
+
         })
     },
-    About:{
-        screen: About
-    },
+    About: {
+        screen: About,
+        navigationOptions: () => ({
+           // headerStyle:{backgroundColor:'transparent'},
+          header:null
+    
+        })
+
+    }, 
 });
 
 const customDrawerNavigation = DrawerNavigator({
@@ -33,7 +40,7 @@ const customDrawerNavigation = DrawerNavigator({
         screen: StackNavigation,
     },
 }, {
-        contentComponent: props=><SideBar {...props}/>,
+        contentComponent: props => <SideBar {...props} />,
         drawerWidth: 300
     });
 

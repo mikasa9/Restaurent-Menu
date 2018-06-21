@@ -5,7 +5,8 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    StatusBar
 } from 'react-native';
 import Header from './Header';
 
@@ -16,6 +17,7 @@ export default class LandingPage extends Component {
             <View
                 style={styles.container}
             >
+            <StatusBar hidden/>
                 <View
                     style={{
                         flex: 1.5,
@@ -102,7 +104,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor:'#f7f7f7'
     },
     imageStyle: {
         marginTop: 20,
