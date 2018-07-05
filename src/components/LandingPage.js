@@ -5,16 +5,38 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    StatusBar,
+    Dimensions,
+    Animated
 } from 'react-native';
+import Header from './Header';
 
+let width=Dimensions.get('window').width;
+let height=Dimensions.get('window').height;
 export default class LandingPage extends Component {
+    componentWillMount(){
+        this.opacityValue=new Animated.Value(1);
+    }
+    
+    animate=()=>{
+        this.opacityValue.setValue(1);
+        Animated.timing(this.opacityValue,{
+            toValue:0,
+            duration:4000
+        }).start()
+    }
    
     render() {
+        const opacity=this.opacityValue.interpolate({
+            inputRange:[0,1],
+            outputRange:[1,0]
+        })
         return (
-            <View
+            <Animate.View
                 style={styles.container}
             >
+            <StatusBar hidden/>
                 <View
                     style={{
                         flex: 1.5,
@@ -76,6 +98,7 @@ export default class LandingPage extends Component {
                         style={styles.inputButton}
                         placeholder="Password"
                     />
+                    <Animated.View >
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => this.props.navigation.navigate('Details')}
@@ -86,9 +109,12 @@ export default class LandingPage extends Component {
                             Login
                     </Text>
                     </TouchableOpacity>
+                    </Animated.View>
                 </View>
-            </View>
-
+                <Header
+                onPress={()=>this.props.navigation.toggleDrawer()}
+                />
+            </Animate.View>
         )
     }
 }
@@ -98,13 +124,14 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor:'#f7f7f7'
     },
     imageStyle: {
         marginTop: 20,
         resizeMode: 'center',
-        height: 100,
-        width: 250
+        height: (100/790)*height,
+        width: (250/152)*width
     },
     title: {
         fontSize: 27,
@@ -113,16 +140,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputButton: {
-        margin: 5,
-        width: 350,
+        margin: (5/152)*width,
+        width: (130/152)*width,
         color: '#ff4500',
         fontSize: 27,
     },
     button: {
-        marginTop: 25,
+        marginTop: 10,
         backgroundColor: '#ff4500',
-        paddingHorizontal: 150,
-        paddingVertical: 15,
+        paddingHorizontal: (60/152)*width,
+        paddingVertical: (10/790)*height,
         borderRadius: 7
     },
 })
