@@ -27,6 +27,7 @@ export default class Details extends Component {
             })
         ]).start()
     }
+
     render() {
         const opacity = this.animateValue.interpolate({
             inputRange: [0, 0.5, 1],
