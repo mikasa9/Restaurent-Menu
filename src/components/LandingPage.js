@@ -14,26 +14,11 @@ import Header from './Header';
 
 let width=Dimensions.get('window').width;
 let height=Dimensions.get('window').height;
-export default class LandingPage extends Component {
-    componentWillMount(){
-        this.opacityValue=new Animated.Value(1);
-    }
-    
-    animate=()=>{
-        this.opacityValue.setValue(1);
-        Animated.timing(this.opacityValue,{
-            toValue:0,
-            duration:4000
-        }).start()
-    }
-   
-    render() {
-        const opacity=this.opacityValue.interpolate({
-            inputRange:[0,1],
-            outputRange:[1,0]
-        })
+
+export default class LandingPage extends Component {        
+    render() {     
         return (
-            <Animated.View
+            <View
                 style={styles.container}
             >
             <StatusBar hidden/>
@@ -114,7 +99,7 @@ export default class LandingPage extends Component {
                 <Header
                 onPress={()=>this.props.navigation.toggleDrawer()}
                 />
-            </Animated.View>
+            </View>
         )
     }
 }

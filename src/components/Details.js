@@ -75,7 +75,7 @@ export default class Details extends Component {
                                 { translateY: this.translateValue }]
                         }]}>
                         I come with no wrapping or pretty pink bows.
-                        am who I am, from my head to my toes.
+                       I am who I am, from my head to my toes.
                         I tend to get loud when speaking my mind.
                         Even a little crazy some of the time.
                    </Animated.Text>

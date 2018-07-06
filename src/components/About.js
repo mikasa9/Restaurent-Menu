@@ -2,77 +2,79 @@ import React from 'react';
 import {
     View,
     Animated,
-    Easing,
     StyleSheet,
     Dimensions,
-    Text
+    Easing
 } from 'react-native';
+
+let height = Dimensions.get('window').height;
+let width = Dimensions.get('window').width;
 
 export default class About extends React.Component {
     constructor() {
         super()
-        this.xValue = new Animated.Value(0);
-        this.yValue = new Animated.Value(0);
+        this.animatedValue = new Animated.Value(0);
+        this.springValue = new Animated.Value(1);
     }
-
-
     componentDidMount() {
-        this.animate();
+        this.move();
     }
-    animate = () => {
+    move = () => {
         Animated.sequence([
-            Animated.timing(this.yValue, {
-                toValue: 500,
-                duration: 4000
+            Animated.timing(this.animatedValue, {
+                toValue: 315,
+                duration: 3900
             }),
-            Animated.timing(this.xValue, {
-                toValue: 100,
-                duration: 4000
+            Animated.timing(this.springValue,{
+                tension:1,
+                toValue:3,
+                easing:Easing.bounce
             })
         ]).start()
-
     }
     render() {
-        const swing = this.xValue.interpolate({
-            inputRange: [50, 150],
-            outputRange: [50, 200]
+        const travelY = this.animatedValue.interpolate({
+            inputRange: [0, 100, 150, 200, 300, 310, 315],
+            outputRange: [0, 150, 220, 350, 400, 500, 470]
         })
-        const move = this.yValue.interpolate({
-            inputRange: [50, 200],
-            outputRange: [200, 50]
+        const travelX = this.animatedValue.interpolate({
+            inputRange: [0, 100, 150, 200, 300, 310, 315],
+            outputRange: [0, 150, -45, 220, -45, 250, 100]
+        })
+        const rotateY = this.animatedValue.interpolate({
+            inputRange: [0,315],
+            outputRange: ['0deg', '360deg']
         })
         return (
             <View
-                style={styles.container}>
-                <Animated.View
-                    style={[styles.viewStyle, {
-                        transform: [{ translateY: move },
-                        { translateX: swing }
+                style={styles.viewStyle}
+            >
+                <Animated.Image
+                    style={[styles.imgStyle,
+                    {
+                        transform: [{ translateY: travelY },
+                        { translateX: travelX },
+                        {rotateY},{scale:this.springValue}
                         ]
-                    }]}>
-                    <Animated.Image
-                    style={styles.viewStyle}
-                    source={{uri:'https://cdn4.iconfinder.com/data/icons/essentials-volume-6/128/ufo-512.png'}}/>
-                   
-                </Animated.View>
+                    }]}
+                    source={{ uri: 'https://cdn0.iconfinder.com/data/icons/space-icons-set-cartoons-style/512/a1251-512.png' }}
+                />
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        height: Dimensions.get('screen').height,
-        width: Dimensions.get('screen').width,
-        backgroundColor: 'lightyellow'
-
-    },
     viewStyle: {
-        height: 100,
-        width: 100,
-        backgroundColor: 'black',
+        height: (789.9 / 790) * height,
+        width: width,
+        backgroundColor: 'darkblue'
+    },
+    imgStyle: {
+        width: 150,
+        height: 150,
+        resizeMode: 'center',
         position: 'absolute',
-        bottom: 0,
-        right: 130
+        top: 0
     }
 })
