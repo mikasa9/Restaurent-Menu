@@ -20,17 +20,14 @@ const StackNavigation = StackNavigator({
         screen: Details,
         navigationOptions: () => ({
             title: 'Detail',
-
         })
     },
     About: {
         screen: About,
         navigationOptions: () => ({
            // headerStyle:{backgroundColor:'transparent'},
-          header:null
-    
+          header:null    
         })
-
     }, 
 });
 

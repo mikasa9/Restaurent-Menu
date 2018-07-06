@@ -33,7 +33,7 @@ export default class LandingPage extends Component {
             outputRange:[1,0]
         })
         return (
-            <Animate.View
+            <Animated.View
                 style={styles.container}
             >
             <StatusBar hidden/>
@@ -114,7 +114,7 @@ export default class LandingPage extends Component {
                 <Header
                 onPress={()=>this.props.navigation.toggleDrawer()}
                 />
-            </Animate.View>
+            </Animated.View>
         )
     }
 }
