@@ -27,11 +27,11 @@ export default class About extends React.Component {
                 duration: 3900
             }),
             Animated.timing(this.springValue, {
-                toValue:2.5,
+                toValue: 2.5,
                 easing: Easing.bounce
             }),
             Animated.spring(this.fontSize, {
-                toValue:45
+                toValue: 45
             })
         ]).start()
     }
@@ -50,9 +50,9 @@ export default class About extends React.Component {
         })
         const fontStyle = {
             fontSize: this.fontSize,
-            color: 'white',            
-            top:100,
-            margin:30
+            color: 'white',
+            top: 100,
+            margin: 30
         }
         return (
             <View
@@ -69,7 +69,8 @@ export default class About extends React.Component {
                     source={{ uri: 'https://www.shareicon.net/download/2016/08/18/809895_ufo_512x512.png' }}
                 />
                 <Animated.Text
-                    style={fontStyle}>Just a food app!</Animated.Text>
+                    style={fontStyle}>Just a food app!
+                </Animated.Text>
             </View>
         )
     }
