@@ -7,7 +7,8 @@ import LandingPage from './src/components/LandingPage';
 import Details from './src/components/Details';
 import SideBar from './src/components/SideBar';
 import About from './src/components/About';
-
+import Settings from './src/components/Settings';
+import Menu from './src/components/Menu';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -19,16 +20,30 @@ const StackNavigation = StackNavigator({
     Details: {
         screen: Details,
         navigationOptions: () => ({
-            title: 'Detail',
+            title: 'Details'
         })
     },
     About: {
         screen: About,
         navigationOptions: () => ({
-           // headerStyle:{backgroundColor:'transparent'},
-          header:null    
+            header: null
         })
-    }, 
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Profile: {
+        screen: Details
+    },
+    Menu: {
+        screen: Menu,
+        navigationOptions: () => ({
+            header: null
+        })
+    }
 });
 
 const customDrawerNavigation = DrawerNavigator({

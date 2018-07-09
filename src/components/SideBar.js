@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text,StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 
 
@@ -16,13 +16,13 @@ export default class SideBar extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => this.props.navigation.navigate('Profile')}
+                    onPress={() => this.props.navigation.navigate('Details')}
                 >
                     <Text style={styles.text}>Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={()=>this.props.navigation.navigate('About')}
+                    onPress={() => this.props.navigation.navigate('About')}
                 >
                     <Text style={styles.text}>About</Text>
                 </TouchableOpacity>
@@ -33,26 +33,26 @@ export default class SideBar extends Component {
 }
 
 
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'flex-start',
-        justifyContent:'center',
-        backgroundColor:'#fff'
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        backgroundColor: '#fff'
     },
-    text:{
-        fontSize:25,
-        color:'#000',
-        alignSelf:'center',
-        marginVertical:12,
-        marginHorizontal:20,
-        width:300      
+    text: {
+        fontSize: 25,
+        color: '#000',
+        alignSelf: 'center',
+        marginVertical: 12,
+        marginHorizontal: 20,
+        width: 300
     },
-    button:{
-        marginVertical:1,
-        backgroundColor:'rgb(250,250,250)',
-        elevation:3
+    button: {
+        marginVertical: 1,
+        backgroundColor: 'rgb(250,250,250)',
+        elevation: 3
     }
 
-    
+
 })

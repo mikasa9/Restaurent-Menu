@@ -71,8 +71,7 @@ export default class Details extends Component {
                     <Animated.Text
                         style={[styles.txt
                             , {
-                            transform: [//{ translateY: this.translateValue },
-                                { translateY: this.translateValue }]
+                            transform: [{ translateY: this.translateValue }]
                         }]}>
                         I come with no wrapping or pretty pink bows.
                        I am who I am, from my head to my toes.

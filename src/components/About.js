@@ -14,37 +14,46 @@ export default class About extends React.Component {
     constructor() {
         super()
         this.animatedValue = new Animated.Value(0);
-        this.springValue = new Animated.Value(1);
+        this.springValue = new Animated.Value(0.3);
+        this.fontSize = new Animated.Value(0);
     }
     componentDidMount() {
         this.move();
     }
     move = () => {
-        Animated.sequence([
+        Animated.stagger(2000, [
             Animated.timing(this.animatedValue, {
-                toValue: 315,
+                toValue: 320,
                 duration: 3900
             }),
-            Animated.timing(this.springValue,{
-                tension:1,
-                toValue:3,
-                easing:Easing.bounce
+            Animated.timing(this.springValue, {
+                toValue:2.5,
+                easing: Easing.bounce
+            }),
+            Animated.spring(this.fontSize, {
+                toValue:45
             })
         ]).start()
     }
     render() {
         const travelY = this.animatedValue.interpolate({
-            inputRange: [0, 100, 150, 200, 300, 310, 315],
+            inputRange: [0, 100, 150, 200, 300, 310, 320],
             outputRange: [0, 150, 220, 350, 400, 500, 470]
         })
         const travelX = this.animatedValue.interpolate({
-            inputRange: [0, 100, 150, 200, 300, 310, 315],
+            inputRange: [0, 100, 150, 200, 300, 310, 320],
             outputRange: [0, 150, -45, 220, -45, 250, 100]
         })
         const rotateY = this.animatedValue.interpolate({
-            inputRange: [0,315],
+            inputRange: [0, 320],
             outputRange: ['0deg', '360deg']
         })
+        const fontStyle = {
+            fontSize: this.fontSize,
+            color: 'white',            
+            top:100,
+            margin:30
+        }
         return (
             <View
                 style={styles.viewStyle}
@@ -54,11 +63,13 @@ export default class About extends React.Component {
                     {
                         transform: [{ translateY: travelY },
                         { translateX: travelX },
-                        {rotateY},{scale:this.springValue}
+                        { rotateY }, { scale: this.springValue }
                         ]
                     }]}
-                    source={{ uri: 'https://cdn0.iconfinder.com/data/icons/space-icons-set-cartoons-style/512/a1251-512.png' }}
+                    source={{ uri: 'https://www.shareicon.net/download/2016/08/18/809895_ufo_512x512.png' }}
                 />
+                <Animated.Text
+                    style={fontStyle}>Just a food app!</Animated.Text>
             </View>
         )
     }
@@ -76,5 +87,5 @@ const styles = StyleSheet.create({
         resizeMode: 'center',
         position: 'absolute',
         top: 0
-    }
+    },
 })

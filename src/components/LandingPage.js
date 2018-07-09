@@ -8,7 +8,6 @@ import {
     StyleSheet,
     StatusBar,
     Dimensions,
-    Animated
 } from 'react-native';
 import Header from './Header';
 
@@ -83,10 +82,10 @@ export default class LandingPage extends Component {
                         style={styles.inputButton}
                         placeholder="Password"
                     />
-                    <Animated.View >
+                    <View >
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => this.props.navigation.navigate('Details')}
+                        onPress={() =>this.props.navigation.navigate('Menu')}
                     >
                         <Text
                             style={{ fontSize: 26, color: '#ffffff' }}
@@ -94,7 +93,7 @@ export default class LandingPage extends Component {
                             Login
                     </Text>
                     </TouchableOpacity>
-                    </Animated.View>
+                    </View>
                 </View>
                 <Header
                 onPress={()=>this.props.navigation.toggleDrawer()}

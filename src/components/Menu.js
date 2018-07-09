@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Image, FlatList, Text, StatusBar, TouchableOpacity } from 'react-native';
 import BackButton from './BackButton';
 import Like from './Like'
-const Ad = [{ id: '1', img: 'https://i.imgur.com/eWeLsAY.png' },
+
+const Ad = 
+[{ id: '1', img: 'https://i.imgur.com/eWeLsAY.png' },
 { id: '2', img: 'http://longwallpapers.com/Desktop-Wallpaper/food-wallpapers-photo-For-Desktop-Wallpaper.jpg' },
 { id: '3', img: 'https://qph.ec.quoracdn.net/main-qimg-c10ec9920a42a9ec7a3e661460909af4.webp' },
 { id: '4', img: 'https://d30v2pzvrfyzpo.cloudfront.net/images/chains/burgerking-opengraph-1.jpg' },
 ]
 
-const Data = [{ id: '1', img: 'https://i.imgur.com/BSHCWgH.jpg', text: 'rice cakes' },
+const Data = 
+[{ id: '1', img: 'https://i.imgur.com/BSHCWgH.jpg', text: 'rice cakes' },
 { id: '2', img: 'https://i.imgur.com/hkdXSKi.gif', text: 'salad' },
 { id: '3', img: 'https://i1.wp.com/40.media.tumblr.com/ea08c98799ab49a53c3a861a975c548f/tumblr_nvp7kb87Mn1t2rr2bo1_1280.png', text: 'sweet' },
 { id: '4', img: 'https://qph.ec.quoracdn.net/main-qimg-49c794a673c7977a888160eee137f67d.webp', text: 'salad2' },
@@ -55,15 +58,9 @@ export default class Menu extends Component {
                 <Like
                     onPress={() => null}
                 />
-
             </TouchableOpacity>
         )
     }
-
-
-
-
-
     render() {
         return (
 
@@ -126,6 +123,5 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 7
 
     },
-
 });
 
