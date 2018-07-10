@@ -1,4 +1,5 @@
 import React from 'react';
+import {Dimensions} from 'react-native';
 import {
     StackNavigator,
     DrawerNavigator
@@ -9,6 +10,7 @@ import SideBar from './src/components/SideBar';
 import About from './src/components/About';
 import Settings from './src/components/Settings';
 import Menu from './src/components/Menu';
+import Flip from './src/components/Flip';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -43,6 +45,12 @@ const StackNavigation = StackNavigator({
         navigationOptions: () => ({
             header: null
         })
+    },
+    Flip: {
+        screen: Flip,
+        navigationOptions: () => ({
+            header: null
+        })
     }
 });
 
@@ -53,7 +61,7 @@ const customDrawerNavigation = DrawerNavigator({
     },
 }, {
         contentComponent: props => <SideBar {...props} />,
-        drawerWidth: 300
+        drawerWidth:Dimensions.get('window').width/1.5
     });
 
 

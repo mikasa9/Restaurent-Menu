@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    Dimensions
+} from 'react-native';
 
 
-
+let width=Dimensions.get('window').width
 export default class SideBar extends Component {
     render() {
         return (
@@ -26,6 +32,12 @@ export default class SideBar extends Component {
                 >
                     <Text style={styles.text}>About</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => this.props.navigation.navigate('Flip')}
+                >
+                    <Text style={styles.text}>Flip</Text>
+                </TouchableOpacity>
 
             </View>
         )
@@ -44,9 +56,9 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: '#000',
         alignSelf: 'center',
-        marginVertical: 12,
-        marginHorizontal: 20,
-        width: 300
+        marginVertical: 8,
+        marginHorizontal: 15,
+        width:width/1.5
     },
     button: {
         marginVertical: 1,
