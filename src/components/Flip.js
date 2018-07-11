@@ -5,7 +5,7 @@ import {
     Text,
     TouchableOpacity,
     StyleSheet,
-    Dimensions, Image
+    Dimensions
 } from 'react-native';
 import Screen1 from './Screen1';
 import Screen2 from './Screen2';
@@ -53,7 +53,7 @@ export default class Flip extends React.Component {
             <View
                 style={styles.container}
             >
-                <Animated.View style={[{ flex: 4 },{transform:[{rotateY:flip}]},{opacity:this.flipValue}]}>
+                <Animated.View style={[{ flex: 4 },{transform:[{rotateY:flip}]}]}>
                     {this.state.click ? this.renderA() : this.renderB()}
                 </Animated.View>
                 <TouchableOpacity

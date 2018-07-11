@@ -4,11 +4,8 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
-    Dimensions
 } from 'react-native';
 
-
-let width=Dimensions.get('window').width
 export default class SideBar extends Component {
     render() {
         return (
@@ -48,22 +45,21 @@ export default class SideBar extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'flex-start',
         justifyContent: 'center',
         backgroundColor: '#fff'
     },
     text: {
         fontSize: 25,
         color: '#000',
-        alignSelf: 'center',
+        justifyContent: 'flex-start',
         marginVertical: 8,
-        marginHorizontal: 15,
-        width:width/1.5
+        marginHorizontal: 15,      
     },
     button: {
         marginVertical: 1,
         backgroundColor: 'rgb(250,250,250)',
-        elevation: 3
+        elevation: 3,
+        position:'relative'
     }
 
 
