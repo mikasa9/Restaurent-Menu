@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React,
+{ Component } from 'react';
 import {
     View,
     TouchableOpacity,
@@ -53,13 +54,13 @@ const styles = StyleSheet.create({
         color: '#000',
         justifyContent: 'flex-start',
         marginVertical: 8,
-        marginHorizontal: 15,      
+        marginHorizontal: 15,
     },
     button: {
         marginVertical: 1,
         backgroundColor: 'rgb(250,250,250)',
         elevation: 3,
-        position:'relative'
+        position: 'relative'
     }
 
 

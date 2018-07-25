@@ -23,10 +23,12 @@ export default class About extends React.Component {
     move = () => {
         Animated.stagger(2000, [
             Animated.timing(this.animatedValue, {
+                delay:500,
                 toValue: 320,
                 duration: 3900
             }),
             Animated.timing(this.springValue, {
+                delay:500,
                 toValue: 2.5,
                 easing: Easing.bounce
             }),

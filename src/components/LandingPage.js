@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React,
+{ Component } from 'react';
 import {
     Text,
     View,
@@ -11,16 +12,16 @@ import {
 } from 'react-native';
 import Header from './Header';
 
-let width=Dimensions.get('window').width;
-let height=Dimensions.get('window').height;
+let width = Dimensions.get('window').width;
+let height = Dimensions.get('window').height;
 
-export default class LandingPage extends Component {        
-    render() {     
+export default class LandingPage extends Component {
+    render() {
         return (
             <View
                 style={styles.container}
             >
-            <StatusBar hidden/>
+                <StatusBar hidden />
                 <View
                     style={{
                         flex: 1.5,
@@ -83,20 +84,20 @@ export default class LandingPage extends Component {
                         placeholder="Password"
                     />
                     <View >
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() =>this.props.navigation.navigate('Menu')}
-                    >
-                        <Text
-                            style={{ fontSize: 26, color: '#ffffff' }}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => this.props.navigation.navigate('Menu')}
                         >
-                            Login
+                            <Text
+                                style={{ fontSize: 26, color: '#ffffff' }}
+                            >
+                                Login
                     </Text>
-                    </TouchableOpacity>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <Header
-                onPress={()=>this.props.navigation.toggleDrawer()}
+                    onPress={() => this.props.navigation.toggleDrawer()}
                 />
             </View>
         )
@@ -109,13 +110,13 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor:'#f7f7f7'
+        backgroundColor: '#f7f7f7'
     },
     imageStyle: {
         marginTop: 20,
         resizeMode: 'center',
-        height: (100/790)*height,
-        width: (250/152)*width
+        height: (100 / 790) * height,
+        width: (250 / 152) * width
     },
     title: {
         fontSize: 27,
@@ -124,16 +125,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputButton: {
-        margin: (5/152)*width,
-        width: (130/152)*width,
+        margin: (5 / 152) * width,
+        width: (130 / 152) * width,
         color: '#ff4500',
         fontSize: 27,
     },
     button: {
         marginTop: 10,
         backgroundColor: '#ff4500',
-        paddingHorizontal: (60/152)*width,
-        paddingVertical: (10/790)*height,
+        paddingHorizontal: (60 / 152) * width,
+        paddingVertical: (10 / 790) * height,
         borderRadius: 7
     },
 })

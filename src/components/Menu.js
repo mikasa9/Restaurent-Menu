@@ -3,30 +3,31 @@ import { View, ScrollView, StyleSheet, Image, FlatList, Text, StatusBar, Touchab
 import BackButton from './BackButton';
 import Like from './Like'
 
-const Ad = 
-[{ id: '1', img: 'https://i.imgur.com/eWeLsAY.png' },
-{ id: '2', img: 'http://longwallpapers.com/Desktop-Wallpaper/food-wallpapers-photo-For-Desktop-Wallpaper.jpg' },
-{ id: '3', img: 'https://qph.ec.quoracdn.net/main-qimg-c10ec9920a42a9ec7a3e661460909af4.webp' },
-{ id: '4', img: 'https://d30v2pzvrfyzpo.cloudfront.net/images/chains/burgerking-opengraph-1.jpg' },
-]
+const Ad =
+    [{ i: '1', img: 'https://i.imgur.com/eWeLsAY.png' },
+    { i: '2', img: 'http://longwallpapers.com/Desktop-Wallpaper/food-wallpapers-photo-For-Desktop-Wallpaper.jpg' },
+    { i: '3', img: 'https://qph.ec.quoracdn.net/main-qimg-c10ec9920a42a9ec7a3e661460909af4.webp' },
+    { i: '4', img: 'https://d30v2pzvrfyzpo.cloudfront.net/images/chains/burgerking-opengraph-1.jpg' },
+    ]
 
-const Data = 
-[{ id: '1', img: 'https://i.imgur.com/BSHCWgH.jpg', text: 'rice cakes' },
-{ id: '2', img: 'https://i.imgur.com/hkdXSKi.gif', text: 'salad' },
-{ id: '3', img: 'https://i1.wp.com/40.media.tumblr.com/ea08c98799ab49a53c3a861a975c548f/tumblr_nvp7kb87Mn1t2rr2bo1_1280.png', text: 'sweet' },
-{ id: '4', img: 'https://qph.ec.quoracdn.net/main-qimg-49c794a673c7977a888160eee137f67d.webp', text: 'salad2' },
-{ id: '5', img: 'https://itadakimasuanime.files.wordpress.com/2015/07/insalata-frittata-shokugeki-no-souma-13-02.png', text: 'barbeque' },
-{ id: '6', img: 'https://i.imgur.com/c4J081W.jpg', text: 'meat soup' },
-{ id: '7', img: 'https://i.imgur.com/U3hHujX.jpg', text: 'cup cakes' },
-{ id: '8', img: 'https://i.imgur.com/aJbSPxN.jpg', text: 'sushi' },
-{ id: '9', img: 'https://i.imgur.com/xYGi3vx.png', text: 'meat and rice' },
-{ id: '10', img: 'https://i.imgur.com/eFT4WWY.png', text: 'stewpot' },
-{ id: '11', img: 'https://i.imgur.com/fVoNWWK.jpg', text: 'meal' },
-{ id: '12', img: 'https://i.imgur.com/eWeLsAY.png', text: 'ramen' },
-]
+const Data =
+    [{ id: '1', img: 'https://i.imgur.com/BSHCWgH.jpg', text: 'rice cakes' },
+    { id: '2', img: 'https://i.imgur.com/hkdXSKi.gif', text: 'salad' },
+    { id: '3', img: 'https://i1.wp.com/40.media.tumblr.com/ea08c98799ab49a53c3a861a975c548f/tumblr_nvp7kb87Mn1t2rr2bo1_1280.png', text: 'sweet' },
+    { id: '4', img: 'https://qph.ec.quoracdn.net/main-qimg-49c794a673c7977a888160eee137f67d.webp', text: 'salad2' },
+    { id: '5', img: 'https://itadakimasuanime.files.wordpress.com/2015/07/insalata-frittata-shokugeki-no-souma-13-02.png', text: 'barbeque' },
+    { id: '6', img: 'https://i.imgur.com/c4J081W.jpg', text: 'meat soup' },
+    { id: '7', img: 'https://i.imgur.com/U3hHujX.jpg', text: 'cup cakes' },
+    { id: '8', img: 'https://i.imgur.com/aJbSPxN.jpg', text: 'sushi' },
+    { id: '9', img: 'https://i.imgur.com/xYGi3vx.png', text: 'meat and rice' },
+    { id: '10', img: 'https://i.imgur.com/eFT4WWY.png', text: 'stewpot' },
+    { id: '11', img: 'https://i.imgur.com/fVoNWWK.jpg', text: 'meal' },
+    { id: '12', img: 'https://i.imgur.com/eWeLsAY.png', text: 'ramen' },
+    ]
 
 export default class Menu extends Component {
     takeKey = ({ id }) => id
+    take = ({ i }) => i
     takeItems = ({ item }) => {
         return (
             <View>
@@ -39,13 +40,20 @@ export default class Menu extends Component {
     }
 
     extractItems = ({ item }) => {
+        console.log(item);
         return (
             <TouchableOpacity
                 style={[styles.container, { borderRadius: 7 }]}
+                onPress={() => this.props.navigation.navigate('Foodetails',{textId:item.text,imgId:item.img})}
             >
-                <Image
+                <View
                     style={{ height: 150, width: 200, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}
-                    source={{ uri: item.img }} />
+                >
+                    <Image
+                        style={{ height: 150, width: 200, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}
+                        source={{ uri: item.img }}
+                    />
+                </View>
 
                 <View style={styles.detail}>
                     <Text style={styles.text}>
@@ -70,7 +78,7 @@ export default class Menu extends Component {
                     style={styles.containers}
                     data={Ad}
                     renderItem={this.takeItems}
-                    keyExtractor={this.takeKey}
+                    keyExtractor={this.take}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
                 />

@@ -11,6 +11,7 @@ import About from './src/components/About';
 import Settings from './src/components/Settings';
 import Menu from './src/components/Menu';
 import Flip from './src/components/Flip';
+import Foodetails from './src/components/Foodetails';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -48,6 +49,12 @@ const StackNavigation = StackNavigator({
     },
     Flip: {
         screen: Flip,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Foodetails: {
+        screen: Foodetails,
         navigationOptions: () => ({
             header: null
         })
