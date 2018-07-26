@@ -5,14 +5,19 @@ import {
     Text,
     StyleSheet,
     Image,
-    Dimensions
+    Dimensions,
+    TouchableOpacity,
+    TextInput
 } from 'react-native';
+import BackButton from './BackButton';
 
 export default class Foodetails extends Component {
     render() {
         const imgId = this.props.navigation.getParam('imgId');
         const textId = this.props.navigation.getParam('textId');
-        console.log(textId);
+        const infoId = this.props.navigation.getParam('infoId');
+
+
         return (
             <View
                 style={styles.container}
@@ -21,23 +26,60 @@ export default class Foodetails extends Component {
                     style={StyleSheet.img}
                 >
                     <Image
-                        style={styles.img}
+                        style={[styles.img, { resizeMode: 'cover' }]}
                         source={{ uri: imgId }}
                     />
+                    <View
+                        style={[styles.img,
+                        {
+                            position: 'absolute',
+                            backgroundColor: 'rgba(0,0,0,0.3)'
+                        }]}>
+                    </View>
+                    <View
+                        style={[styles.img,
+                        {
+                            position: 'absolute',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }]}>
+                        <Text
+                            style={[styles.txt, { color: 'white' }]}>
+                            {textId}
+                        </Text>
+                        <Text
+                            style={[styles.txt, { color: 'white', fontSize: 17, fontWeight: 'normal', textAlign: 'center' }]}>
+                            {infoId}
+                        </Text>
+                    </View>
                 </View>
                 <View
                     style={styles.textBox}
                 >
                     <Text
                         style={styles.txt}>
-                        {textId}
+                        Enter Shipping Address
                     </Text>
-                    <Text>
-                        kehgakjslfjgljozhoehoisdhvkhskhckhaslhlhfhosiyfosyfiohshadvkhdkhzskhdkyfiyeiosyoiygeohoihdslhgkhsdkhgkhduisyiesyi
-                    </Text>
-
+                    <TextInput
+                    style={styles.inptButton}
+                    />
+                    <TextInput
+                    style={styles.inptButton}
+                    />
+                    <TextInput
+                    style={styles.inptButton}
+                    />
+                   <TouchableOpacity
+                   style={styles.button}>
+                        <Text
+                        style={[styles.txt,{color:'white'}]}>
+                            Order
+                        </Text>
+                   </TouchableOpacity>
                 </View>
-
+                <BackButton
+                    onPress={() => this.props.navigation.goBack()}
+                />
             </View>
         )
     }
@@ -53,12 +95,11 @@ const styles = StyleSheet.create({
     img: {
         height: Dimensions.get('screen').height / 2.5,
         width: Dimensions.get('screen').width,
-        resizeMode: 'cover',
         zIndex: 0
     },
     textBox: {
         width: 250,
-        height: 300,
+        height: 350,
         padding: 10,
         alignItems: 'center',
         backgroundColor: 'rgb(248,248,248)',
@@ -69,5 +110,20 @@ const styles = StyleSheet.create({
     txt: {
         fontSize: 20,
         fontWeight: 'bold'
+    },
+    button: {
+        marginTop:20,
+        width:150,
+        backgroundColor:'#ff4500',
+        alignItems:'center',
+        borderRadius:30,
+        padding:10,        
+    },
+    inptButton:{
+        marginTop:20,
+        width:150,
+        color: '#000000',
+        fontSize:22,
     }
+
 })
