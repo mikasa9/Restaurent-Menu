@@ -16,6 +16,7 @@ export default class Foodetails extends Component {
         const imgId = this.props.navigation.getParam('imgId');
         const textId = this.props.navigation.getParam('textId');
         const infoId = this.props.navigation.getParam('infoId');
+        console.log(Dimensions.get('screen').width);
 
 
         return (
@@ -62,12 +63,15 @@ export default class Foodetails extends Component {
                     </Text>
                     <TextInput
                     style={styles.inptButton}
+                    maxLength={15}
                     />
                     <TextInput
                     style={styles.inptButton}
+                    maxLength={15}
                     />
                     <TextInput
                     style={styles.inptButton}
+                    maxLength={15}
                     />
                    <TouchableOpacity
                    style={styles.button}>
@@ -112,16 +116,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     button: {
-        marginTop:20,
-        width:150,
+        marginTop:Dimensions.get('screen').width/20.55,
+        width:Dimensions.get('screen').width/2.74,
         backgroundColor:'#ff4500',
         alignItems:'center',
         borderRadius:30,
         padding:10,        
     },
     inptButton:{
-        marginTop:20,
-        width:150,
+        marginTop:Dimensions.get('screen').width/20.55,
+        width:Dimensions.get('screen').width/2.74,
         color: '#000000',
         fontSize:22,
     }
