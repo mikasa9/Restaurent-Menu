@@ -5,7 +5,7 @@ import {
     View,
     Image,
     TextInput,
-    TouchableOpacity,
+    TouchableHighlight,
     StyleSheet,
     StatusBar,
     Dimensions,
@@ -37,17 +37,17 @@ export default class LandingPage extends Component {
                         style={styles.title}
                     >
                         Welcome Back!
-                </Text>
+                    </Text>
                     <Text
                         style={{ fontSize: 19, color: '#000000', marginTop: 20, }}
                     >
                         Introducing yonai,with more than 6 thousand
-                </Text>
+                    </Text>
                     <Text
                         style={{ fontSize: 19, color: '#000000' }}
                     >
                         recepies and amazing features yonai.
-                </Text>
+                     </Text>
                 </View>
                 <View
                     style={{
@@ -84,16 +84,16 @@ export default class LandingPage extends Component {
                         placeholder="Password"
                     />
                     <View >
-                        <TouchableOpacity
+                        <TouchableHighlight
                             style={styles.button}
-                            onPress={() => this.props.navigation.navigate('Menu')}
+                            onPress={() => this.props.navigation.navigate('ImageView')}
                         >
                             <Text
                                 style={{ fontSize: 26, color: '#ffffff' }}
                             >
                                 Login
-                    </Text>
-                        </TouchableOpacity>
+                            </Text>
+                        </TouchableHighlight>
                     </View>
                 </View>
                 <Header
@@ -133,8 +133,9 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 10,
         backgroundColor: '#ff4500',
-        paddingHorizontal: (60 / 152) * width,
         paddingVertical: (10 / 790) * height,
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 7
     },
 })

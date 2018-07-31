@@ -16,8 +16,6 @@ export default class Foodetails extends Component {
         const imgId = this.props.navigation.getParam('imgId');
         const textId = this.props.navigation.getParam('textId');
         const infoId = this.props.navigation.getParam('infoId');
-        console.log(Dimensions.get('screen').width);
-
 
         return (
             <View
@@ -45,11 +43,20 @@ export default class Foodetails extends Component {
                             justifyContent: 'center'
                         }]}>
                         <Text
-                            style={[styles.txt, { color: 'white' }]}>
+                            style={[styles.txt,
+                            { color: 'white' }]}
+                        >
                             {textId}
                         </Text>
                         <Text
-                            style={[styles.txt, { color: 'white', fontSize: 17, fontWeight: 'normal', textAlign: 'center' }]}>
+                            style={[styles.txt,
+                            {
+                                color: 'white',
+                                fontSize: 17,
+                                fontWeight: 'normal',
+                                textAlign: 'center'
+                            }]}
+                        >
                             {infoId}
                         </Text>
                     </View>
@@ -58,28 +65,34 @@ export default class Foodetails extends Component {
                     style={styles.textBox}
                 >
                     <Text
-                        style={styles.txt}>
-                        Enter Shipping Address
+                        style={[styles.txt]}
+                    >
+                    Enter Shipping Address
                     </Text>
                     <TextInput
-                    style={styles.inptButton}
-                    maxLength={15}
+                        style={styles.inptButton}
+                        underlineColorAndroid={'transparent'}
+                        maxLength={30}
                     />
                     <TextInput
-                    style={styles.inptButton}
-                    maxLength={15}
+                        style={styles.inptButton}
+                        underlineColorAndroid={'transparent'}
+                        maxLength={30}
                     />
                     <TextInput
-                    style={styles.inptButton}
-                    maxLength={15}
+                        style={styles.inptButton}
+                        underlineColorAndroid={'transparent'}
+                        maxLength={30}
                     />
-                   <TouchableOpacity
-                   style={styles.button}>
+                    <TouchableOpacity
+                        style={styles.button}>
                         <Text
-                        style={[styles.txt,{color:'white'}]}>
+                            style={[styles.txt,
+                            { color: 'white' }]}
+                        >
                             Order
                         </Text>
-                   </TouchableOpacity>
+                    </TouchableOpacity>
                 </View>
                 <BackButton
                     onPress={() => this.props.navigation.goBack()}
@@ -102,6 +115,9 @@ const styles = StyleSheet.create({
         zIndex: 0
     },
     textBox: {
+        flex: 5,
+        flexDirection: 'column',
+        justifyContent: 'space-around',     
         width: 250,
         height: 350,
         padding: 10,
@@ -109,25 +125,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(248,248,248)',
         borderRadius: 10,
         zIndex: 1,
-        bottom: Dimensions.get('screen').height / 35
+        bottom: Dimensions.get('screen').height / 35,
+        alignItems: 'stretch',
+        elevation:2
     },
     txt: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     button: {
-        marginTop:Dimensions.get('screen').width/20.55,
-        width:Dimensions.get('screen').width/2.74,
-        backgroundColor:'#ff4500',
-        alignItems:'center',
-        borderRadius:30,
-        padding:10,        
+        backgroundColor: '#ff4500',
+        alignItems: 'center',
+        borderRadius: 30,
+        padding: 10,
     },
-    inptButton:{
-        marginTop:Dimensions.get('screen').width/20.55,
-        width:Dimensions.get('screen').width/2.74,
+    inptButton: {
         color: '#000000',
-        fontSize:22,
+        borderBottomWidth: 0.3,
+        fontSize: 22,
+    },
+    inptButtonStyle: {
+        flex: 1,
     }
-
 })

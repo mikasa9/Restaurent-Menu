@@ -14,6 +14,12 @@ export default class SideBar extends Component {
             <View style={styles.container}>
                 <TouchableOpacity
                     style={styles.button}
+                    onPress={() => this.props.navigation.navigate('Anime')}
+                >
+                    <Text style={styles.text}>Anime</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
                     onPress={() => this.props.navigation.navigate('Settings')}
                 >
                     <Text style={styles.text}>Settings</Text>

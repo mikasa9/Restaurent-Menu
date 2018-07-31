@@ -7,26 +7,51 @@ import {
     FlatList,
     Text,
     StatusBar,
-    TouchableOpacity
+    TouchableOpacity,
+    Modal,
+    Dimensions
 } from 'react-native';
 import BackButton from './BackButton';
 import Like from './Like';
-import { Transition } from 'react-navigation-fluid-transitions';
 import { Ad, Data } from '../Database'
 
 let count = 0;
-export default class Menu extends Component {
+export default class ImageView extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isModalViewVisible: false,
+            currentClickedItem: undefined
+        };
+    }
+
+    componentDidMount() {
+        StatusBar.setHidden(true);
+    }
+
+    toggleModalView = (currentClickedItem) => {
+        this.setState({
+            isModalViewVisible: !this.state.isModalViewVisible,
+            currentClickedItem
+        });
+    }
+
     takeKey = ({ id }) => id
     take = ({ i }) => i
     takeItems = ({ item }) => {
         count = count + 1;
         return (
-            <View>
-                <Image
-                    style={{ width: 460, height: 350, resizeMode: 'cover' }}
-                    source={{ uri: item.img }}>
-                </Image>
-            </View>
+            <TouchableOpacity
+                onPress={() => this.toggleModalView(item)}>
+                <View>
+                    <Image
+                        style={{ width: 460, height: 350, resizeMode: 'cover' }}
+                        source={{ uri: item.img }}>
+                    </Image>
+                </View>
+            </TouchableOpacity>
         )
     }
 
@@ -38,9 +63,8 @@ export default class Menu extends Component {
                 {
                     borderRadius: 7,
                 }]}
-                onPress={() => this.props.navigation.navigate('Exp')}
-            //  onPress={() => this.props.navigation.navigate('Foodetails', { textId: item.text, imgId: item.img, infoId: item.info })}
-            //='#111111'
+                //   onPress={() => this.props.navigation.navigate('Exp')}
+                onPress={() => this.props.navigation.navigate('Foodetails', { textId: item.text, imgId: item.img, infoId: item.info })}
             >
                 <View styles={{ flex: 4 }}>
                     <Image
@@ -62,6 +86,8 @@ export default class Menu extends Component {
         )
     }
     render() {
+        const { currentClickedItem } = this.state;
+
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#ffffff' }}>
                 <StatusBar hidden />
@@ -91,6 +117,29 @@ export default class Menu extends Component {
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
                 />
+                <Modal
+                    visible={this.state.isModalViewVisible}
+                    transparent={true}
+                    onRequestClose={this.toggleModalView}
+                >
+                    <View
+                        style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: 'rgba(50,50,50,0.8)',
+                        }}
+                    >
+                        <Text style={{ fontSize: 30, color: 'white' }}>{currentClickedItem ? currentClickedItem.i : ''}/{count}</Text>
+                        <TouchableOpacity
+                            onPress={this.toggleModalView}
+                        >
+                            <Image style={styles.enlargeimg}
+                                source={{ uri: currentClickedItem ? currentClickedItem.img : null }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </Modal>
                 <BackButton
                     onPress={() => this.props.navigation.goBack()}
                 />
@@ -126,6 +175,10 @@ const styles = StyleSheet.create({
         width: 200,
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7,
+    },
+    enlargeimg: {
+        height: Dimensions.get('screen').height / 2.5,
+        width: Dimensions.get('screen').width,
     }
 });
 

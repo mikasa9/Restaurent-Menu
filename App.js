@@ -12,6 +12,9 @@ import Settings from './src/components/Settings';
 import Menu from './src/components/Menu';
 import Flip from './src/components/Flip';
 import Foodetails from './src/components/Foodetails';
+import Anime from './src/components/Anime';
+import Exp from './src/components/Exp';
+import ImageView from './src/components/ImageView';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -25,6 +28,12 @@ const StackNavigation = StackNavigator({
         navigationOptions: () => ({
             title: 'Details'
         })
+    },
+    Anime: {
+        screen: Anime,      
+        navigationOptions: {
+            header: null
+        },
     },
     About: {
         screen: About,
@@ -58,7 +67,19 @@ const StackNavigation = StackNavigator({
         navigationOptions: () => ({
             header: null
         })
-    }
+    },
+    Exp: {
+        screen: Exp,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    ImageView: {
+        screen: ImageView,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
 });
 
 const customDrawerNavigation = DrawerNavigator({
