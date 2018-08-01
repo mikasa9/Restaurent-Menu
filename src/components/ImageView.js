@@ -89,7 +89,9 @@ export default class ImageView extends Component {
         const { currentClickedItem } = this.state;
 
         return (
-            <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#ffffff' }}>
+            <ScrollView showsVerticalScrollIndicator={false}
+                style={{ backgroundColor: '#ffffff' }}
+            >
                 <StatusBar hidden />
                 <FlatList
                     style={styles.containers}
@@ -106,7 +108,7 @@ export default class ImageView extends Component {
                     keyExtractor={this.takeKey}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
-                // numColumns={3}
+                //  numColumns={1}
                 />
                 <Text style={styles.text}>Top choice</Text>
                 <FlatList
@@ -121,6 +123,7 @@ export default class ImageView extends Component {
                     visible={this.state.isModalViewVisible}
                     transparent={true}
                     onRequestClose={this.toggleModalView}
+                    animationType='slide'
                 >
                     <View
                         style={{
