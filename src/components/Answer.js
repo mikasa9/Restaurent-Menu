@@ -16,7 +16,7 @@ export const Ans=[{
       },
       {
         answer: "a four-story Georgian-style home in Missouri",
-        answerCount: 50,
+        answerCount: 19,
         correct: true
       },
       {

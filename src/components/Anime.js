@@ -5,7 +5,8 @@ import {
     StyleSheet,
     FlatList,
     TouchableOpacity,
-    Animated
+    Animated,
+    Dimensions
 } from 'react-native';
 import { Ans } from './Answer';
 
@@ -32,23 +33,19 @@ export default class Anime extends Component {
             <TouchableOpacity
                 onPress={() => this.onPress(index)}>
                 <View
-                    style={{ height:95}}>
+                    style={{ height: 95 }}>
                     <Text
                         style={styles.optionStyle}>
                         {item.answer}
                     </Text>
                     <View style={styles.ansbg}>
-                    <View style={{position:'absolute',
-                    top:0,left:0,right:0,bottom:0,
-                    borderRadius:15,
-                    backgroundColor:'#4A4A4A',
-                    width:(item.answerCount/Ans[0].totalResponses)*100}}/>
-                    {this.state.pressIndex ?
-                        <Text
-                            style={styles.response}
-                        >
-                            {item.answerCount}/{Ans[0].totalResponses}
-                        </Text> : null}</View>
+                        <View style={[styles.ansBar, { width: (item.answerCount / Ans[0].totalResponses) * (Dimensions.get('screen').width) }]} />
+                        {this.state.pressIndex ?
+                            <Text
+                                style={styles.response}
+                            >
+                                {item.answerCount}/{Ans[0].totalResponses}
+                            </Text> : null}</View>
                 </View>
             </TouchableOpacity>
         )
@@ -107,23 +104,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'black',
         padding: 5,
-        marginTop:5
+        marginTop: 5
     },
     response: {
         fontSize: 20,
         color: 'black',
-       // margin: 3,
     },
-    ansbg:{
-        backgroundColor:'#F5F4F6',
-        borderRadius:15,
-        alignItems:'flex-end',
-        justifyContent:'center'
+    ansbg: {
+        backgroundColor: '#F5F4F6',
+        borderRadius: 15,
+        alignItems: 'flex-end',
+        justifyContent: 'center'
     },
-    correctAns:{
-
-    },
-    wrongAns:{
-
+    ansBar: {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        borderRadius: 15,
+        backgroundColor: '#4A4A4A',
     }
 })
