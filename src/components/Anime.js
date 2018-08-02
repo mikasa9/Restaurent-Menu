@@ -38,7 +38,11 @@ export default class Anime extends Component {
                         {item.answer}
                     </Text>
                     <View style={styles.ansbg}>
-                    <View/>
+                    <View style={{position:'absolute',
+                    top:0,left:0,right:0,bottom:0,
+                    borderRadius:15,
+                    backgroundColor:'#4A4A4A',
+                    width:(item.answerCount/Ans[0].totalResponses)*100}}/>
                     {this.state.pressIndex ?
                         <Text
                             style={styles.response}
@@ -115,5 +119,11 @@ const styles = StyleSheet.create({
         borderRadius:15,
         alignItems:'flex-end',
         justifyContent:'center'
+    },
+    correctAns:{
+
+    },
+    wrongAns:{
+
     }
 })
