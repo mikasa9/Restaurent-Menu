@@ -4,45 +4,61 @@ import {
     Text,
     StyleSheet,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Animated
 } from 'react-native';
 import { Ans } from './Answer';
 
-let i = 0;
 export default class Anime extends Component {
     take = ({ id }) => id;
 
     constructor(props) {
         super(props)
         this.state = { pressIndex: false };
+
     }
-    showitem = (response,i) => {
-        if (this.state.pressIndex != true){
-            Ans[0].totalResponses = response + 1;
-           console.log(i) ;
-        }            
+
+    onPress = (i) => {
+        if (this.state.pressIndex != true) {
+            Ans[0].totalResponses = Ans[0].totalResponses + 1;
+            Ans[0].answers[i].answerCount = Ans[0].answers[i].answerCount + 1
+        }
         this.setState({ pressIndex: !this.state.pressIndex });
     }
 
-    nesteData = (items, response) => {
-        let a = []
-        for (i = 0; i < items.length; i++) {
-            a.push(<TouchableOpacity
-                onPress={() => this.showitem(response,i)}>
-                <Text style={styles.optionStyle}>{items[i].answer}</Text>
-                <Text>{this.state.pressIndex ? `${items[i].answerCount}/${response}` : ''}</Text>
-            </TouchableOpacity>)
-        }
-        return a
+
+    items = ({ item, index }) => {
+        return (
+            <TouchableOpacity
+                onPress={() => this.onPress(index)}>
+                <View
+                    style={{ height:95}}>
+                    <Text
+                        style={styles.optionStyle}>
+                        {item.answer}
+                    </Text>
+                    <View style={styles.ansbg}>
+                    <View/>
+                    {this.state.pressIndex ?
+                        <Text
+                            style={styles.response}
+                        >
+                            {item.answerCount}/{Ans[0].totalResponses}
+                        </Text> : null}</View>
+                </View>
+            </TouchableOpacity>
+        )
     }
 
     takeItems = ({ item }) => {
         return (
             <View style={[styles.card]}>
                 <Text style={styles.questionStyle}>{item.question}</Text>
-                <View>
-                    {this.nesteData(item.answers, item.totalResponses)}
-                </View>
+                <FlatList
+                    data={Ans[0].answers}
+                    renderItem={this.items}
+                    extraData={this.state.pressIndex}
+                />
             </View>
         )
     }
@@ -50,14 +66,14 @@ export default class Anime extends Component {
     render() {
         return (
             <View
-                style={styles.container}
+                style={[styles.container]}
             >
                 <FlatList
                     data={Ans}
-                    extraData={this.state.pressIndex}
                     renderItem={this.takeItems}
                     keyExtractor={this.take}
                     showsHorizontalScrollIndicator={false}
+                    extraData={this.state.pressIndex}
                 />
             </View>
         )
@@ -87,7 +103,17 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'black',
         padding: 5,
-        marginTop: 10
-
+        marginTop:5
+    },
+    response: {
+        fontSize: 20,
+        color: 'black',
+       // margin: 3,
+    },
+    ansbg:{
+        backgroundColor:'#F5F4F6',
+        borderRadius:15,
+        alignItems:'flex-end',
+        justifyContent:'center'
     }
 })
