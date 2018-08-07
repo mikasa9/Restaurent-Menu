@@ -1,42 +1,27 @@
-import React, { Component } from 'react';
+import React,
+{ Component } from 'react';
 import {
     Text,
     View,
     Image,
     TextInput,
-    TouchableOpacity,
+    TouchableHighlight,
     StyleSheet,
     StatusBar,
     Dimensions,
-    Animated
 } from 'react-native';
 import Header from './Header';
 
-let width=Dimensions.get('window').width;
-let height=Dimensions.get('window').height;
+let width = Dimensions.get('window').width;
+let height = Dimensions.get('window').height;
+
 export default class LandingPage extends Component {
-    componentWillMount(){
-        this.opacityValue=new Animated.Value(1);
-    }
-    
-    animate=()=>{
-        this.opacityValue.setValue(1);
-        Animated.timing(this.opacityValue,{
-            toValue:0,
-            duration:4000
-        }).start()
-    }
-   
     render() {
-        const opacity=this.opacityValue.interpolate({
-            inputRange:[0,1],
-            outputRange:[1,0]
-        })
         return (
-            <Animate.View
+            <View
                 style={styles.container}
             >
-            <StatusBar hidden/>
+                <StatusBar hidden />
                 <View
                     style={{
                         flex: 1.5,
@@ -52,17 +37,17 @@ export default class LandingPage extends Component {
                         style={styles.title}
                     >
                         Welcome Back!
-                </Text>
+                    </Text>
                     <Text
                         style={{ fontSize: 19, color: '#000000', marginTop: 20, }}
                     >
                         Introducing yonai,with more than 6 thousand
-                </Text>
+                    </Text>
                     <Text
                         style={{ fontSize: 19, color: '#000000' }}
                     >
                         recepies and amazing features yonai.
-                </Text>
+                     </Text>
                 </View>
                 <View
                     style={{
@@ -98,23 +83,23 @@ export default class LandingPage extends Component {
                         style={styles.inputButton}
                         placeholder="Password"
                     />
-                    <Animated.View >
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => this.props.navigation.navigate('Details')}
-                    >
-                        <Text
-                            style={{ fontSize: 26, color: '#ffffff' }}
+                    <View >
+                        <TouchableHighlight
+                            style={styles.button}
+                            onPress={() => this.props.navigation.navigate('ImageView')}
                         >
-                            Login
-                    </Text>
-                    </TouchableOpacity>
-                    </Animated.View>
+                            <Text
+                                style={{ fontSize: 26, color: '#ffffff' }}
+                            >
+                                Login
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
                 <Header
-                onPress={()=>this.props.navigation.toggleDrawer()}
+                    onPress={() => this.props.navigation.toggleDrawer()}
                 />
-            </Animate.View>
+            </View>
         )
     }
 }
@@ -125,13 +110,13 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor:'#f7f7f7'
+        backgroundColor: '#f7f7f7'
     },
     imageStyle: {
         marginTop: 20,
         resizeMode: 'center',
-        height: (100/790)*height,
-        width: (250/152)*width
+        height: (100 / 790) * height,
+        width: (250 / 152) * width
     },
     title: {
         fontSize: 27,
@@ -140,16 +125,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     inputButton: {
-        margin: (5/152)*width,
-        width: (130/152)*width,
+        margin: (5 / 152) * width,
+        width: (130 / 152) * width,
         color: '#ff4500',
         fontSize: 27,
     },
     button: {
         marginTop: 10,
         backgroundColor: '#ff4500',
-        paddingHorizontal: (60/152)*width,
-        paddingVertical: (10/790)*height,
+        paddingVertical: (10 / 790) * height,
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 7
     },
 })

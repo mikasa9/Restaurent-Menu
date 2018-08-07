@@ -1,4 +1,5 @@
 import React from 'react';
+import {Dimensions} from 'react-native';
 import {
     StackNavigator,
     DrawerNavigator
@@ -7,7 +8,13 @@ import LandingPage from './src/components/LandingPage';
 import Details from './src/components/Details';
 import SideBar from './src/components/SideBar';
 import About from './src/components/About';
-
+import Settings from './src/components/Settings';
+import Menu from './src/components/Menu';
+import Flip from './src/components/Flip';
+import Foodetails from './src/components/Foodetails';
+import Anime from './src/components/Anime';
+import Exp from './src/components/Exp';
+import ImageView from './src/components/ImageView';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -19,19 +26,60 @@ const StackNavigation = StackNavigator({
     Details: {
         screen: Details,
         navigationOptions: () => ({
-            title: 'Detail',
-
+            title: 'Details'
         })
+    },
+    Anime: {
+        screen: Anime,      
+        navigationOptions: {
+            header: null
+        },
     },
     About: {
         screen: About,
         navigationOptions: () => ({
-           // headerStyle:{backgroundColor:'transparent'},
-          header:null
-    
+            header: null
         })
-
-    }, 
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Profile: {
+        screen: Details
+    },
+    Menu: {
+        screen: Menu,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Flip: {
+        screen: Flip,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Foodetails: {
+        screen: Foodetails,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    Exp: {
+        screen: Exp,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
+    ImageView: {
+        screen: ImageView,
+        navigationOptions: () => ({
+            header: null
+        })
+    },
 });
 
 const customDrawerNavigation = DrawerNavigator({
@@ -41,7 +89,7 @@ const customDrawerNavigation = DrawerNavigator({
     },
 }, {
         contentComponent: props => <SideBar {...props} />,
-        drawerWidth: 300
+        drawerWidth:Dimensions.get('window').width/1.5
     });
 
 

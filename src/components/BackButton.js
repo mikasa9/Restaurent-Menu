@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class BackButton extends Component{
-
     render(){
         return(
             <View style={styles.Container}>
